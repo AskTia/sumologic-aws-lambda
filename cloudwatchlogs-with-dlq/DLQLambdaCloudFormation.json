@@ -99,6 +99,24 @@
                 "SumoCWLogsLambda"
             ]
         },
+        "AuroraCWLogSubscriptionFilter": {
+            "Type": "AWS::Logs::SubscriptionFilter",
+            "Properties": {
+                "LogGroupName": { "Fn::Sub": "/aws/rds/cluster/aurora-cluster-${EnvironmentName}/postgresql"},
+                "DestinationArn": {
+                    "Fn::GetAtt": [
+                        "SumoCWLogsLambda",
+                        "Arn"
+                    ]
+                },
+                "FilterPattern": ""
+            },
+            "DependsOn": [
+                "SumoCWLogGroup",
+                "SumoCWLambdaPermission",
+                "SumoCWLogsLambda"
+            ]
+        },
         "SumoCWLambdaPermission": {
 
             "Type": "AWS::Lambda::Permission",
