@@ -236,7 +236,7 @@
                 "FunctionName": { "Fn::Sub": "SumoCWLogsLambda-${EnvironmentName}"},
                 "Code": {
                     "S3Bucket": { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "bucketname"]},
-                    "S3Key": "cloudwatchlogs-with-dlq.zip"
+                    "S3Key": "cloudwatchLogsDLQ/v1.3.0/cloudwatchlogs-with-dlq.zip"
                 },
                 "Role": {
                     "Fn::GetAtt": [
@@ -254,7 +254,7 @@
                     }
                 },
                 "Handler": "cloudwatchlogs_lambda.handler",
-                "Runtime": "nodejs14.x",
+                "Runtime": "nodejs22.x",
                 "MemorySize": 128,
                 "Environment": {
                     "Variables": {
@@ -298,7 +298,7 @@
                 "FunctionName": { "Fn::Sub": "SumoCWProcessDLQLambda-${EnvironmentName}"},
                 "Code": {
                     "S3Bucket": { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "bucketname"]},
-                    "S3Key": "cloudwatchlogs-with-dlq.zip"
+                    "S3Key": "cloudwatchLogsDLQ/v1.3.0/cloudwatchlogs-with-dlq.zip"
                 },
                 "Role": {
                     "Fn::GetAtt": [
@@ -316,7 +316,7 @@
                         ]
                     }
                 },
-                "Runtime": "nodejs14.x",
+                "Runtime": "nodejs22.x",
                 "MemorySize": 128,
                 "Environment": {
                     "Variables": {
